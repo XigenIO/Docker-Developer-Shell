@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+docker run --rm -it \
+  --name weechat \
+  --hostname weechat \
+  -c 64 -m 64m \
+  -e PGID=1000 -e PUID=1000 \
+  -v /etc/hosts:/etc/hosts:ro \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /home/chris/data/weechat:/weechat/.weechat \
+  xigen/weechat:latest

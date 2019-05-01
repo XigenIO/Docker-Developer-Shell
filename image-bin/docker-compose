@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+source ~/bin/image-utils.sh
+
+docker run \
+  --rm \
+  -it \
+  --init \
+  --user $XIGEN_HOST_USERID:$XIGEN_HOST_GROUPID \
+  --volume $XIGEN_MOUNTPOINT:$(pwd) \
+  --workdir=$(pwd) \
+  -e DOCKER_HOST="$DOCKER_HOST" \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e COMPOSE_PROJECT_NAME=$(basename $(pwd)) \
+  docker/compose:$XIGEN_DOCKER_COMPOSE_VERSION $@

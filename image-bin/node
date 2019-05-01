@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+source ~/bin/image-utils.sh
+
+docker run \
+    --rm \
+    -it \
+    --init \
+    --user $XIGEN_HOST_USERID:$XIGEN_HOST_GROUPID \
+    --volume $XIGEN_MOUNTPOINT:$(pwd) \
+    --workdir=$(pwd) \
+    --entrypoint /usr/local/bin/node \
+    xigen/node:latest "$@"
