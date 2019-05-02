@@ -11,7 +11,9 @@ fi
 XIGEN_HOST_USER=$(whoami)
 XIGEN_HOST_USERID=$(id -u)
 XIGEN_HOST_GROUPID=$(id -g)
-XIGEN_CODE_DIR="$HOME/${XIGEN_CODE_DIR:-git}"
+
+export XIGEN_CODE_DIR=${XIGEN_CODE_DIR:-git}
+export XIGEN_CODE_PATH="$HOME/$XIGEN_CODE_DIR"
 
 docker run -it \
   --user $XIGEN_HOST_USERID:$XIGEN_HOST_GROUPID \
@@ -24,7 +26,7 @@ docker run -it \
   -e DOCKER_GID=$DOCKER_GID \
   -v /var/run/docker.sock:/var/run/docker.sock:rw \
   -v $HOME/data:/home/xigen/data \
-  -v $XIGEN_CODE_DIR:/home/xigen/git \
+  -v $XIGEN_CODE_PATH:/home/xigen/$XIGEN_CODE_DIR \
   -v $HOME/.ssh:/home/xigen/.ssh \
   -v $HOME/.gitconfig:/home/xigen/.gitconfig \
   -v $HOME/.zsh_aliases:/home/xigen/.zsh_aliases_local \
