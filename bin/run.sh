@@ -28,6 +28,7 @@ docker run -it \
   -v $HOME/data:/home/xigen/data \
   -v $XIGEN_CODE_PATH:/home/xigen/$XIGEN_CODE_DIR \
   -v $HOME/.ssh:/home/xigen/.ssh \
+  -v $HOME/.docker:/home/xigen/.docker \
   -v $HOME/.gitconfig:/home/xigen/.gitconfig \
   -v $HOME/.zsh_aliases:/home/xigen/.zsh_aliases_local \
   -v $HOME/.zsh_history:/home/xigen/.zsh_history \
