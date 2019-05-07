@@ -4,7 +4,7 @@ ENV XIGEN_DOCKER_COMPOSE_VERSION 1.24.0
 
 RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing font-noto-emoji
 
-RUN apk add tmux zsh git curl vim shadow openssh-client \
+RUN apk add tmux zsh git curl vim shadow openssh-client gnupg rsync \
   && adduser -D -u 1000 xigen \
   && addgroup docker \
   && usermod -a -G docker xigen
